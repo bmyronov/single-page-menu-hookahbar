@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 EXPOSE 8081/tcp
 
-RUN pip install poetry
+RUN apt install poetry
 
 WORKDIR /app
 
