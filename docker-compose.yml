@@ -4,8 +4,9 @@ services:
   app:
     build: .
     container_name: app
-    command: /bin/sh -c "cd app/ && poetry shell && python main.py"
+    restart: unless-stopped
+    command: bash -c "cd app/ && python3 main.py"
     volumes:
       - .:/app
     ports:
-      - "8001:8001"
+      - "8000:8000"

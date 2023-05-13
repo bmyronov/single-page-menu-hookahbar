@@ -1,14 +1,14 @@
-FROM python:3.11-slim
+FROM python:3.11
 
-EXPOSE 8081/tcp
-
-RUN apt install poetry
+RUN mkdir /app 
 
 WORKDIR /app
 
 COPY . .
+COPY pyproject.toml .
 
-RUN poetry config virtualenvs.in-project true
-RUN poetry install
+ENV PYTHONPATH=${PYTHONPATH}:${PWD} 
 
-CMD ["python", "main.py"]
+RUN pip3 install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-dev
