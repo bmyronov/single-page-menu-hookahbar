@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  app:
+  menu-hookahbar:
     build: .
     container_name: app
     restart: unless-stopped
